@@ -5,19 +5,32 @@ class Volunteer
   def initialize(attributes)
     @name = attributes[:name]
     @project_id = attributes[:project_id].to_i
+    @id = attributes[:id]
+
   end
 
   def self.all
     all_volunteers = DB.exec("SELECT * FROM volunteers;")
     volunteers = []
     all_volunteers.each do |volunteer|
-    volunteers.push(Volunteer.new({:name => volunteer['name'], :project_id => volunteer['project_id']}))
+      name = volunteer.fetch("name")
+      project_id = volunteer.fetch("project_id")
+      id = volunteer.fetch("id").to_i()
+      volunteers.push(Volunteer.new({:name => name, :project_id => project_id, :id => id}))
     end
     volunteers
   end
 
+  def self.find(id)
+    result = DB.exec("SELECT * FROM volunteers WHERE id = #{id};")
+    name = result.first().fetch("name")
+    project_id = result.first().fetch("project_id")
+    Volunteer.new({:name => name, :project_id => project_id, :id => id})
+  end
+
   def save
-    DB.exec("INSERT INTO volunteers (name, project_id) VALUES ('#{@name}', #{@project_id});")
+    result = DB.exec("INSERT INTO volunteers (name, project_id) VALUES ('#{@name}', #{@project_id}) RETURNING id;")
+    @id = result.first().fetch("id").to_i()
   end
 
   def ==(another_volunteer)
