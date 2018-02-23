@@ -4,14 +4,26 @@ class Project
 
   def initialize(attributes)
     @title = attributes[:title]
+    @id = attributes[:id]
   end
 
   def self.all
     all_projects = DB.exec("SELECT * FROM projects;")
     projects = []
     all_projects.each do |project|
-    projects.push(Project.new({:title => title}))
+      title = project.fetch("title")
+      id = project.fetch("id").to_i()
+    projects.push(Project.new({:title => title, :id => id}))
     end
     projects
+  end
+
+  def save
+    result = DB.exec("INSERT INTO projects (title) VALUES ('#{@title}') RETURNING id;")
+    @id = result.first().fetch("id").to_i()
+  end
+
+  def ==(another_project)
+    self.title().==(another_project.title)
   end
 end
