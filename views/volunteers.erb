@@ -1,0 +1,15 @@
+<h2>Volunteers Portal</h2>
+<form action="/volunteers" method="post">
+    <label for="add-volunteer">Add Volunteer:</label>
+    <input type="text" name="add-volunteer" class="form-control">
+    <label for="volunteers">Project ID:</label>
+    <input type="text" name="volunteers" class="form-control">
+    <br>
+    <button type="submit" name="button" class="btn btn-info">Submit</button>
+  </form>
+  <h2>Current Projects</h2>
+    <% @project_list.each do |project| %>
+      <h3><%= project.title %>
+      <h5>Project ID: <%= project.id %></h5>
+    <% end %>
+    <a href='/' class='btn btn-primary'>Back</a>

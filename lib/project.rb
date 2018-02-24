@@ -1,6 +1,6 @@
 class Project
-  attr_accessor(:title)
-  attr_reader(:project_id, :id)
+  attr_accessor(:title, :project_id)
+  attr_reader(:id)
 
   def initialize(attributes)
     @title = attributes[:title]
@@ -35,6 +35,16 @@ class Project
       list_volunteers.push(Volunteer.new({:name => name, :project_id => project_id, :id => id}))
     end
     list_volunteers
+  end
+
+  def update(attributes)
+    @title = attributes.fetch(:title)
+    @id = self.id()
+    DB.exec("UPDATE projects SET title = '#{@title}' WHERE id = #{@id};")
+  end
+
+  def delete
+    DB.exec("DELETE FROM projects WHERE id = #{self.id()};")
   end
 
   def save

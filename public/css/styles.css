@@ -1,0 +1,41 @@
+#main-logo {
+  width: 25%;
+  display: block;
+  text-align: center;
+}
+
+.home {
+  background-image: url("../img/fantasia.png");
+  background-repeat: repeat;
+  background-size: 50%;
+  opacity: 0.5;
+  display: block;
+  margin: 0 auto;
+  margin-top: 5%;
+}
+
+img {
+  opacity: 0.8;
+}
+
+img:hover {
+  opacity: 1.0;
+  display: none;
+}
+.buttons{
+  text-align: center;
+  position: fixed;
+  top:10%;
+  right:9%;
+}
+
+.btn.btn-info {
+  width: 200px;
+}
+
+.form-container {
+  width:500px;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
