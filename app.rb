@@ -29,66 +29,41 @@ post('/administrator') do
   erb(:administrator)
 end
 
+get('/administrator/:id') do
+  @find_id = Project.find(params[:id])
+  title = params[:title]
+  erb(:projects)
+end
+
+
+post('/adminstrator/:id') do
+  @find_id = Project.find(params[:id])
+  project = Project.new({:title => title})
+  title = params[:title]
+  project.save
+ erb(:projects)
+end
+
 get('/volunteers') do
+  name = params[:name]
+  project_id = params[:project_id]
+  volunteer = Volunteer.new({:name => name, :project_id => project_id})
   @project_list = Project.all
-  @volunteers_list = Volunteer.all
   erb(:volunteers)
 end
 
 post('/volunteers') do
+  name = params[:name]
+  project_id = params[:project_id]
+  volunteer = Volunteer.new({:name => name, :project_id => project_id})
   @project_list = Project.all
+  @project_list.volunteers
   erb(:volunteers)
 end
 
-get('/operator/add_city') do
-  @city_list = City_add.all
-  erb(:add_city)
-end
-
-post('operator/add_city') do
-  new_train = Train_add.new({:train_name => params[:train_name], :cities => params[:cities]})
-  new_train.save
-  route_list = new_train.get_route
-
-  erb(:add_city)
-end
-
-get('/operator/add_train') do
-  @train_list = Train_add.all
-  erb(:add_train)
-end
-
-post('/operator/add_train') do
-  new_train = Train_add.new({:train_name => params[:train_name], :cities => params[:cities]})
-  new_train.save
-  route_list = new_train.get_route
-  erb(:add_train)
-end
-
-# delete("/operator/add_train/:id") do
-#   @train_list = Train_add.find(params.fetch("id").to_i())
-#   @train_list.delete()
-#   @train_list = Train_add.all()
-#   erb(:add_train)
-# end
-
-get('/timetable') do
-
-  erb(:timetable)
-end
-
-get('/schedule') do
-  Table.all
-
-  erb(:get_times)
-end
-
-post('/schedule') do
-  station_id = new_time.get_station_id
-  train_id = new_time.get_train_id
-
-  # new_time = Table.new({:station => station, :train => train, :time_of_day => time_of_day, :time => addtime})
-
-
-  erb(:get_times)
+patch("/volunteers/:id") do
+  name = params.fetch("name")
+  @find_id = Project.find(params.fetch("id").to_i())
+  @find_id.update({:name => name})
+  erb(:volunteers)
 end

@@ -1,21 +1,25 @@
+h1{
+  text-align: center;
+  color: rgb(60, 72, 91);
+  font-family: 'Raleway', sans-serif;
+
+}
 #main-logo {
   width: 25%;
   display: block;
   text-align: center;
+  margin: 0 auto;
 }
 
 .home {
-  background-image: url("../img/fantasia.png");
-  background-repeat: repeat;
-  background-size: 50%;
-  opacity: 0.5;
-  display: block;
+  background-image: url("../img/fantasia2.png"); display: block;
   margin: 0 auto;
   margin-top: 5%;
+  width: 800px;
 }
 
 img {
-  opacity: 0.8;
+  opacity: 0.5;
 }
 
 img:hover {
@@ -25,16 +29,55 @@ img:hover {
 .buttons{
   text-align: center;
   position: fixed;
-  top:10%;
-  right:9%;
+  top: 20%;
+  right:23%;
 }
 
 .btn.btn-info {
   width: 200px;
+  background-color:  rgb(60, 72, 91);
+  border: 2px white solid;
 }
 
 .form-container {
   width:500px;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+
+body {
+  background-color: rgb(60, 72, 91);
+  color: white;
+  font-family: 'Raleway';
+}
+
+.admin {
+  color: white;
+}
+
+.btn.btn-primary {
+  background-color: rgb(60, 72, 91);
+  border: 2px white solid;
+  margin-top: 10px;
+}
+
+.current-projects {
+  border: 2px white solid;
+  padding: 5px;
+  border-radius: 5%;
+}
+.project, h3 {
+  color: white;
+  text-align: center;
+}
+
+a {
+  color: white;
+}
+.volunteers {
+  width: 500px;
+  text-align;
   display: block;
   margin: 0 auto;
   text-align: center;
