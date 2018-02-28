@@ -82,3 +82,23 @@ a {
   margin: 0 auto;
   text-align: center;
 }
+
+#editanddelete{
+  margin: 0 auto;
+  display: block;
+  width: 15%;
+}
+
+#updatebutton {
+  margin: 0 auto;
+  display: block;
+}
+
+.form-control {
+  width: 500px;
+  display: block;
+  margin: 0 auto;
+}
+h2 {
+  text-align: center;
+}

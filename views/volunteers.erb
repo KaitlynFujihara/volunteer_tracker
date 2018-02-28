@@ -6,13 +6,17 @@
       <label for="project_id">Project ID:</label>
       <input type="text" name="project_id" class="form-control">
       <br>
-      <button type="submit" name="button" class="btn btn-info">Submit</button>
+      <button type="submit" name="button" class="btn btn-info">Update Volunteer</button>
     </form>
+    <h2>Active Volunteers</h2>
+      <% @volunteer_list.each do |volunteer| %>
+      <h4><a href="/administrator/<%= volunteer.id %>"><%= volunteer.name %></a></h4>
+      <% end %>
     <h2>Current Projects</h2>
     <% @project_list.each do |project| %>
       <h3><a href="/administrator/<%= project.id %>"><%= project.title %></a></h3>
-      <h5>Project ID: <%= project.id %><br>
-      Project Volunteers: <%= project.volunteers %></h5>
+      <h5>Project ID: <%= project.id %><br><%= project.volunteers %>
       <% end %>
+      <br>
       <a href='/' class='btn btn-primary'>Back</a>
     </div>

@@ -3,17 +3,17 @@
   <h1 class="admin">Administrator Portal</h1>
 
   <h2>Start a New Project!</h2>
-  <form action="/administrator" method="post">
-      <label for="title">Add Project:</label>
-      <input type="text" name="title" class="form-control">
-      <br>
-      <button type="submit" name="button" class="btn btn-info">Create Project</button>
-    </form>
-    <h2>Current Projects</h2>
+  <form action="/projects" method="post">
+    <label for="title">Add Project:</label>
+    <input type="text" name="title" class="form-control">
+    <br>
+    <button type="submit" name="button" class="btn btn-info">Create Project</button>
+  </form>
+  <h2>Current Projects</h2>
     <div class="current-projects">
     <% @project_list.each do |project| %>
-      <h3><a href="/administrator/<%= project.id %>"><%= project.title %></a></h3>
-      <h5>Project ID: <%= project.id %></h5>
+    <h3><a href="/projects/<%= project.id %>"><%= project.title %></a></h3>
+    <h5>Project ID: <%= project.id %></h5>
     <% end %>
   </div>
   <br>

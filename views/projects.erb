@@ -2,3 +2,8 @@
 
 <h1 class="project"><%= @find_id.title %></h1>
 <h3>Project ID: <%= @find_id.id %></h3>
+<h3><%= @find_id.volunteers %></h3>
+
+<a href='/projects/<%= @find_id.id %>/edit' class='btn btn-primary' id="editanddelete">Edit Project</a>
+<br>
+<a href='/' class='btn btn-primary' id="editanddelete">Update Volunteer</a>

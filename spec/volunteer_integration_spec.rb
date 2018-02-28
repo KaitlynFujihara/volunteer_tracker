@@ -12,7 +12,7 @@ set(:show_exceptions, false)
 
 describe 'the project creation path', {:type => :feature} do
   it 'takes the user to the homepage where they can create a project' do
-    visit '/administrator'
+    visit '/projects'
     fill_in('title', :with => 'Teaching Kids to Code')
     click_button('Create Project')
     expect(page).to have_content('Teaching Kids to Code')
@@ -25,7 +25,7 @@ describe 'the project update path', {:type => :feature} do
   it 'allows a user to change the name of the project' do
     test_project = Project.new({:title => 'Teaching Kids to Code', :id => nil})
     test_project.save
-    visit '/'
+    visit '/projects'
     click_link('Teaching Kids to Code')
     click_link('Edit Project')
     fill_in('title', :with => 'Teaching Ruby to Kids')
@@ -43,7 +43,7 @@ describe 'the project delete path', {:type => :feature} do
     id = test_project.id
     visit "/projects/#{id}/edit"
     click_button('Delete Project')
-    vist '/'
+    visit '/'
     expect(page).not_to have_content("Teaching Kids to Code")
   end
 end
