@@ -1,9 +1,10 @@
-<a href='/' class='btn btn-primary'>Back</a>
+<a href='/projects' class='btn btn-primary'>Back</a>
+<a href='/volunteers' class='btn btn-primary'>Volunteers Page</a>
 
-<h1 class="project"><%= @find_id.title %></h1>
-<h3>Project ID: <%= @find_id.id %></h3>
-<h3><%= @find_id.volunteers %></h3>
+<h1 class="project"><%= @find_project.title %></h1>
+<h3>Project ID: <%= @find_project.id %></h3>
 
-<a href='/projects/<%= @find_id.id %>/edit' class='btn btn-primary' id="editanddelete">Edit Project</a>
+
+<a href='/projects/<%= @find_project.id %>/edit' class='btn btn-primary' id="editanddelete">Edit Project</a>
 <br>
 <a href='/' class='btn btn-primary' id="editanddelete">Update Volunteer</a>

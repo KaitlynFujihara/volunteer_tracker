@@ -10,13 +10,13 @@
     </form>
     <h2>Active Volunteers</h2>
       <% @volunteer_list.each do |volunteer| %>
-      <h4><a href="/administrator/<%= volunteer.id %>"><%= volunteer.name %></a></h4>
+      <h4><a href="/project/<%= volunteer.id %>"><%= volunteer.name %></a></h4>
       <% end %>
     <h2>Current Projects</h2>
     <% @project_list.each do |project| %>
-      <h3><a href="/administrator/<%= project.id %>"><%= project.title %></a></h3>
-      <h5>Project ID: <%= project.id %><br><%= project.volunteers %>
-      <% end %>
+      <h3><a href="/projects/<%= project.id %>"><%= project.title %></a></h3>
+      <h5>Project ID: <%= project.id %><br><% end %>
+      </h5>
       <br>
       <a href='/' class='btn btn-primary'>Back</a>
     </div>

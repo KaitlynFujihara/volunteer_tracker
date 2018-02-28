@@ -1,0 +1,10 @@
+<a href='/volunteers' class='btn btn-primary'>Back</a>
+
+<h2>Update <%=@find_volunteer.name() %> </h2>
+
+<form action="/volunteers/<%= @find_volunteer.id() %>" method="post" class="form-container">
+  <label for="name">Change Volunteer:</label>
+  <input id="name" name="name" type="text" class="form-control">
+  <br>
+  <button type="submit" name="button" class="btn btn-primary" id="updatebutton">Update Volunteer</button>
+</form>

@@ -30,43 +30,34 @@ post('/projects') do
 end
 
 get('/projects/:id') do
-  @find_id = Project.find(params[:id])
+  @find_project = Project.find(params[:id])
   title = params[:title]
   erb(:projects)
 end
 
 post('/projects/:id') do
-  @find_id = Project.find(params[:id])
-  project = Project.new({:title => title})
-  title = params[:title]
-  project.save
-  name = params[:name]
-  project_id = params[:project_id]
-  volunteer = Volunteer.new({:name => name, :project_id => project_id})
-  volunteer.save
   @project_list = Project.all
   @volunteer_list = Volunteer.all
+  @find_project = Project.find(params[:id])
+  title = params[:title]
+  name = params[:name]
+  project_id = params[:project_id].to_i
+  volunteer = Volunteer.new({:name => name, :project_id => project_id})
+  volunteer.save
  erb(:projects)
 end
 
 get("/projects/:id/edit") do
-  @find_id = Project.find(params.fetch("id").to_i())
+  title = params[:title]
+  @find_project = Project.find(params.fetch("id").to_i())
   erb(:update)
-
 end
 
 patch("/projects/:id") do
   title = params[:title]
-  @find_id = Project.find(params.fetch("id").to_i())
-  @find_id.update({:title => title})
-  @find_id.save
-  erb(:projects)
-end
-
-delete("/projects/:id") do
-  @find_id = Project.find(params.fetch("id").to_i())
-  @find_id.delete()
-  @find_id = Project.all()
+  @find_project = Project.find(params.fetch("id").to_i())
+  @find_project.update({:title => title})
+  @find_project.save
   erb(:projects)
 end
 
@@ -77,12 +68,18 @@ get('/volunteers') do
 end
 
 post('/volunteers') do
-  name = params[:name]
-  project_id = params[:project_id]
-  volunteer = Volunteer.new({:name => name, :project_id => project_id})
-  volunteer.save
   @project_list = Project.all
   @volunteer_list = Volunteer.all
-
+  name = params[:name]
+  project_id = params[:project_id].to_i
+  volunteer = Volunteer.new({:name => name, :project_id => project_id})
+  volunteer.save
   erb(:volunteers)
+end
+
+delete("/projects/:id") do
+  @find_project = Project.find(params.fetch("id").to_i())
+  @find_project.delete()
+  @find_project = Project.all()
+  erb(:projects)
 end
