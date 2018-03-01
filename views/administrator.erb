@@ -3,9 +3,9 @@
   <h1 class="admin">Administrator Portal</h1>
 
   <h2>Start a New Project!</h2>
-  <form action="/projects" method="post">
+  <form action="/projects" method="post" id="create">
     <label for="title">Add Project:</label>
-    <input type="text" name="title" class="form-control">
+    <input required type="text" name="title" class="form-control" id="projectinput">
     <br>
     <button type="submit" name="button" class="btn btn-info">Create Project</button>
   </form>

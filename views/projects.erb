@@ -3,8 +3,9 @@
 
 <h1 class="project"><%= @find_project.title %></h1>
 <h3>Project ID: <%= @find_project.id %></h3>
-
-
-<a href='/projects/<%= @find_project.id %>/edit' class='btn btn-primary' id="editanddelete">Edit Project</a>
+<h3>Volunteers: <% @find_project.volunteers.each do |volunteer| %>
+<br><a href="/volunteers/<%= volunteer.id %>"><%= volunteer.name%></a>
+<% end %>
 <br>
-<a href='/' class='btn btn-primary' id="editanddelete">Update Volunteer</a>
+<br>
+<a href='/projects/<%= @find_project.id %>/edit' class='btn btn-primary' id="editanddelete">Edit Project</a>

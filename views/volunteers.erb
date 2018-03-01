@@ -3,19 +3,30 @@
   <form action="/volunteers" method="post">
       <label for="name">Add Volunteer:</label>
       <input type="text" name="name" class="form-control">
-      <label for="project_id">Project ID:</label>
-      <input type="text" name="project_id" class="form-control">
       <br>
+      <label for="project_id">Select a Project</label>
+      <select id='project_id' name='project_id' type='text'>
+        <option disabled selected>Select</option>
+        <% @project_list.each() do |project| %>
+        <option value="<%= project.id()%>"> <%= project.title() %> </option>
+        <% end %>
+      </select>
+      <br><br>
       <button type="submit" name="button" class="btn btn-info">Update Volunteer</button>
     </form>
+
     <h2>Active Volunteers</h2>
       <% @volunteer_list.each do |volunteer| %>
-      <h4><a href="/project/<%= volunteer.id %>"><%= volunteer.name %></a></h4>
+      <h4><a href="/volunteers/<%= volunteer.id %>"><%= volunteer.name %></a></h4>
       <% end %>
     <h2>Current Projects</h2>
     <% @project_list.each do |project| %>
       <h3><a href="/projects/<%= project.id %>"><%= project.title %></a></h3>
-      <h5>Project ID: <%= project.id %><br><% end %>
+      <h5>Project ID: <%= project.id %><br>
+      <% project.volunteers.each do |volunteer| %>
+      <%= volunteer.name%>
+      <% end %>
+      <% end %>
       </h5>
       <br>
       <a href='/' class='btn btn-primary'>Back</a>
